@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+
+void moniter(int &b) { //기본 화면
+	cout << "*****DVD 주문 프로그램*****\n\n";
+	cout << "1. 액션 DVD (12000원)\n";
+	cout << "2. 코미디 DVD(15000원)\n";
+	cout << "3.드라마 DVD(11000원)\n";
+	cout << "4.SF DVD(16000원)\n";
+	cout << "5.애니메이션 DVD(13000원)\n";
+	cout << "구매하실 DVD번호를 입력하세요(종료는 0) :";
+	cin >> b;
+	
+}
+
+int main() {
+	int b = 0;
+	char c = NULL;
+	int DVD = 0;
+	int end = 0;
+	int price = 0;
+	int total = 0;
+
+	string menu[] = { "액션DVD","코미디DVD","드라마DVD","SFDVD","애니메이션DVD" }; //배열의 저장
+	int prices[] = { 12000, 15000, 11000, 16000, 13000 };
+	
+	while (end == 0) {
+		moniter(b);
+
+		if (b >= 1 && b <= 5) {
+			cout << menu[b - 1] << "을(를) 구매하시겠습니까? (Y/N)" << endl;
+			cin >> c;
+			if (c == 'Y') {
+				cout << "구매하실 DVD의 개수를 입력해주세요.:" << endl ;
+				cin >> DVD;
+				cout << menu[b - 1] << DVD << "개를 구매하셨습니다." << endl;
+				price = DVD * prices[b - 1];
+				total = total + price;
+				cout << "가격은" << price << "원 입니다." << endl;
+			}
+
+		}
+		else if (b == 0) {
+			cout << "총 금액은" << total << "원 입니다.";
+			cout << "프로그램을 종료합니다." <<endl;
+			end++;
+		}
+		else {
+			cout << "올바른 번호를 입력하세요." <<endl;
+
+		}
+	}
+
+	return 0;
+
+}
